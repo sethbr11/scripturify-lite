@@ -10,8 +10,8 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: "Missing text" }, { status: 400 });
 
   // Tokenize user input
-  const tokens = text.toLowerCase().match(/\b[a-z']+\b/g) || [];
-  const uniqueTokens = [...new Set(tokens)].slice(0, 40);
+  const tokens = (text.toLowerCase().match(/\b[a-z']+\b/g) ?? []) as string[];
+  const uniqueTokens: string[] = [...new Set(tokens)].slice(0, 40);
 
   // Find scripture matches using simple LIKE matching
   const matches: any[] = [];
