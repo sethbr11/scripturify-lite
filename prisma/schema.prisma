@@ -1,0 +1,23 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model Scripture {
+  id        Int     @id @default(autoincrement())
+  ref       String
+  text      String
+  keywords  String
+}
+
+model Project {
+  id         Int      @id @default(autoincrement())
+  title      String
+  userText   String
+  footnotes  String
+  createdAt  DateTime @default(now())
+}
